@@ -24,6 +24,7 @@
     casks = [
       "arc"
       "ghostty"
+      "stats"
       "tailscale-app"
     ];
   };
