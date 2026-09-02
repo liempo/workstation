@@ -49,8 +49,44 @@
     fi
   '';
 
-  # macOS preferences
-  system.defaults = {
+  # macOS preferences: Stage Manager + native tiling (no third-party WM)
+  system.defaults.WindowManager = {
+    GloballyEnabled = true;
+    AppWindowGroupingBehavior = true;
+    AutoHide = false;
+
+    EnableTilingByEdgeDrag = true;
+    EnableTopTilingByEdgeDrag = true;
+    EnableTilingOptionAccelerator = true;
+    EnableTiledWindowMargins = true;
+  };
+
+  # ⌘` toggles Stage Manager (symbolic hotkey 222); disables window-cycle (27)
+  system.defaults.CustomUserPreferences."com.apple.symbolichotkeys" = {
+    AppleSymbolicHotKeys = {
+      "27" = {
+        enabled = false;
+        value = {
+          parameters = [
+            96
+            50
+            1048576
+          ];
+          type = "standard";
+        };
+      };
+      "222" = {
+        enabled = true;
+        value = {
+          parameters = [
+            96
+            50
+            1048576
+          ];
+          type = "standard";
+        };
+      };
+    };
   };
 
   # Determinate installer manages Nix itself
