@@ -18,6 +18,8 @@ The shell process is replaced. When you exit or detach from tmux, the terminal c
 
 Nested tmux is avoided because the check skips when `$TMUX` is set.
 
+Closing or detaching a terminal only drops the client. The `main` session keeps running until you kill the last pane, kill the tmux server, or reboot. The next terminal reattaches to the same live session. There is no disk save across reboot.
+
 ## Helpers
 
 | Command | Alias | Purpose |
