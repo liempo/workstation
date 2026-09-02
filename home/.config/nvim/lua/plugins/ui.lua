@@ -1,9 +1,11 @@
 return {
 
-	{ -- Tokyo night
-		"folke/tokyonight.nvim",
+	{ -- NeoGotham
+		"https://gitlab.com/shmerl/neogotham",
+		lazy = false,
+		priority = 1000,
 		config = function()
-			vim.cmd("colorscheme tokyonight-night")
+			vim.cmd.colorscheme("neogotham")
 		end,
 	},
 
@@ -45,14 +47,74 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
-	{ -- Status line
+	{ -- Status line (flat NeoGotham; no powerline separators — those stay on tmux)
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		event = "VeryLazy",
 		config = function()
+			-- NeoGotham — https://gitlab.com/shmerl/neogotham
+			local g = {
+				bg0 = "#0c1014",
+				bg1 = "#11151c",
+				bg2 = "#091f2e",
+				bg3 = "#0a3749",
+				fg = "#99d1ce",
+				dim = "#599cab",
+				blue = "#195466",
+				cyan = "#33859e",
+				green = "#2aa889",
+				yellow = "#edb443",
+				red = "#c23127",
+				violet = "#4d618e",
+			}
+
+			local theme = {
+				normal = {
+					a = { fg = g.bg0, bg = g.dim, gui = "bold" },
+					b = { fg = g.fg, bg = g.bg2 },
+					c = { fg = g.dim, bg = g.bg1 },
+				},
+				insert = {
+					a = { fg = g.bg0, bg = g.green, gui = "bold" },
+					b = { fg = g.fg, bg = g.bg2 },
+					c = { fg = g.dim, bg = g.bg1 },
+				},
+				visual = {
+					a = { fg = g.bg0, bg = g.violet, gui = "bold" },
+					b = { fg = g.fg, bg = g.bg2 },
+					c = { fg = g.dim, bg = g.bg1 },
+				},
+				replace = {
+					a = { fg = g.bg0, bg = g.red, gui = "bold" },
+					b = { fg = g.fg, bg = g.bg2 },
+					c = { fg = g.dim, bg = g.bg1 },
+				},
+				command = {
+					a = { fg = g.bg0, bg = g.yellow, gui = "bold" },
+					b = { fg = g.fg, bg = g.bg2 },
+					c = { fg = g.dim, bg = g.bg1 },
+				},
+				inactive = {
+					a = { fg = g.dim, bg = g.bg2 },
+					b = { fg = g.dim, bg = g.bg1 },
+					c = { fg = g.blue, bg = g.bg1 },
+				},
+			}
+
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
+					theme = theme,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+				},
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "encoding", "fileformat", "filetype" },
+					lualine_y = { "progress" },
+					lualine_z = { "location" },
 				},
 			})
 		end,

@@ -12,7 +12,7 @@ This file is the router for agents. Prefer the workflow docs for full procedures
 | Git accounts, `core.sshCommand`, remotes | [docs/workflows/git.md](docs/workflows/git.md) |
 | Node / Bun / Deno / direnv | [docs/workflows/toolchains.md](docs/workflows/toolchains.md) |
 | Rebuild (`drs`, `drs --impure`) | [docs/workflows/rebuild.md](docs/workflows/rebuild.md) |
-| Shell helpers (`lap`, `tat`, `vact`) | [docs/workflows/shell.md](docs/workflows/shell.md) |
+| Shell helpers (`drs`, `vact`), auto tmux | [docs/workflows/shell.md](docs/workflows/shell.md) |
 | Launchd / System Settings labels | [docs/workflows/launchd.md](docs/workflows/launchd.md) |
 | Impurity / live nvim edits | [docs/workflows/impurity.md](docs/workflows/impurity.md) |
 | Neovim / LSP | [docs/workflows/neovim.md](docs/workflows/neovim.md) |
@@ -38,7 +38,7 @@ Start at [docs/README.md](docs/README.md). Do not invent workflows that contradi
 | `system/configuration.nix` | System packages, Homebrew casks |
 | `home/liempo.nix` | Home-manager entry: imports + XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
-| `home/shell.nix` | Zsh, oh-my-zsh, fzf/zoxide/direnv, `lap`/`drs`/`vact` |
+| `home/shell.nix` | Zsh, oh-my-zsh, fzf/zoxide/direnv, auto tmux, `drs`/`vact` |
 | `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
 | `home/workstation.nix` | Stub Workstation.app for launchd Settings labels |
 | `home/.config/nvim/` | Neovim (may use `impurity.link`) |

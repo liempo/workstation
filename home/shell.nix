@@ -28,6 +28,11 @@
         ];
       };
       initContent = ''
+        # Interactive shells always join (or create) the fixed `main` tmux session.
+        if [[ -z "$TMUX" && -o interactive ]]; then
+          exec tmux new-session -A -s main
+        fi
+
         bindkey '^J' down-line-or-history
         bindkey '^K' up-line-or-history
         bindkey '^L' forward-char
@@ -50,22 +55,6 @@
               deactivate
             fi
           fi
-        }
-
-        lap() {
-          local name
-          name="$(basename "$PWD" | sed -e 's/\\.//g')"
-          if tmux ls 2>&1 | grep "$name"; then
-            tmux attach -t "$name"
-          elif [[ -f .envrc ]]; then
-            direnv exec / tmux new-session -s "$name"
-          else
-            tmux new-session -s "$name"
-          fi
-        }
-
-        tat() {
-          lap "$@"
         }
 
         drs() {

@@ -7,29 +7,28 @@ Integrations: fzf, zoxide, direnv.
 SSH key auto-load at login lives in `home/git.nix` next to `gitAccounts`.
 It is not in this module.
 
+## Tmux
+
+Interactive Zsh sessions that are not already inside tmux run:
+
+`exec tmux new-session -A -s main`
+
+This attaches to the existing `main` session, or creates it when it is missing.
+The shell process is replaced. When you exit or detach from tmux, the terminal closes.
+
+Nested tmux is avoided because the check skips when `$TMUX` is set.
+
 ## Helpers
 
 | Command | Alias | Purpose |
 |---------|-------|---------|
 | `drs` | none | Rebuild system config. Use `drs --impure` for writable symlinks. |
-| `lap` | `tat` | Attach or create a tmux session named after the current directory. |
 | `vact` | none | Activate or deactivate `./.venv` by directory. |
-
-### lap / tat
-
-1. Set the session name to the basename of `$PWD` (dots removed).
-2. If the session exists, attach to it.
-3. If `.envrc` exists, start the session with `direnv exec`.
-4. Otherwise, start a plain new session.
 
 ### drs
 
 F1-themed shorthand: Drag Reduction System equals deploy config changes.
 See [rebuild.md](rebuild.md).
-
-### lap
-
-F1-themed shorthand: start or rejoin a project lap (tmux stint).
 
 ## System tools
 
