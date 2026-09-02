@@ -29,6 +29,26 @@
     ];
   };
 
+  # nix-darwin launchd labels: com.liempo.* (was org.nixos.*)
+  # System daemons must use /bin/sh + wait4path (store paths are not
+  # executable until /nix is mounted). Login Items therefore show "sh".
+  launchd.labelPrefix = "com.liempo";
+
+  # Undo a previous cosmetic rewrite of Determinate's nix-hook to a store
+  # binary (breaks early boot). No-op once ProgramArguments[0] is /bin/sh.
+  system.activationScripts.postActivation.text = ''
+    plist=/Library/LaunchDaemons/systems.determinate.nix-installer.nix-hook.plist
+    if [[ -f "$plist" ]]; then
+      current=$(/usr/bin/plutil -extract ProgramArguments.0 raw "$plist" 2>/dev/null || true)
+      if [[ "$current" == */bin/nix-installer-hook ]]; then
+        echo "restoring Determinate nix-hook to /bin/sh + wait4path" >&2
+        /usr/bin/plutil -replace ProgramArguments -json '["/bin/sh","-c","/bin/wait4path /nix/nix-installer && /nix/nix-installer repair"]' "$plist"
+        /bin/launchctl bootout system/systems.determinate.nix-installer.nix-hook 2>/dev/null || true
+        /bin/launchctl bootstrap system "$plist" 2>/dev/null || true
+      fi
+    fi
+  '';
+
   # macOS preferences
   system.defaults = {
   };

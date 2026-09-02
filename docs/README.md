@@ -1,8 +1,8 @@
 # Documentation
 
-Nix-darwin dotfiles for a single macOS workstation (`aarch64-darwin`).
+Nix-darwin dotfiles for one macOS workstation (`aarch64-darwin`).
 
-Agent entrypoint: [AGENTS.md](../AGENTS.md) (router + hard rules).
+Agents start at [AGENTS.md](../AGENTS.md). That file is the router and lists the hard rules.
 
 ## Repo layout
 
@@ -10,10 +10,11 @@ Agent entrypoint: [AGENTS.md](../AGENTS.md) (router + hard rules).
 |------|---------|
 | `flake.nix` | Flake inputs and two darwin configurations |
 | `system/configuration.nix` | System packages, Homebrew casks, fonts |
-| `home/liempo.nix` | Home-manager entry: imports + XDG / impurity links |
+| `home/liempo.nix` | Home-manager entry: imports and XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, helpers (`lap`, `drs`, `vact`), fzf/zoxide/direnv |
 | `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
+| `home/workstation.nix` | Stub Workstation.app for launchd Settings labels |
 | `home/.config/` | Neovim, tmux, Ghostty config files |
 | `home/.ideavimrc` | IntelliJ/IdeaVim keybindings |
 
@@ -33,7 +34,8 @@ Rebuild with the `drs` shell function. See [workflows/rebuild.md](workflows/rebu
 | [development.md](workflows/development.md) | Project directory layout |
 | [git.md](workflows/git.md) | Multi-account SSH and commit identity |
 | [toolchains.md](workflows/toolchains.md) | Node, Bun, Deno, direnv |
-| [rebuild.md](workflows/rebuild.md) | `drs` and applying changes |
+| [rebuild.md](workflows/rebuild.md) | `drs` and how to apply changes |
 | [shell.md](workflows/shell.md) | Shell helpers (`lap`, `tat`, `vact`) |
-| [impurity.md](workflows/impurity.md) | Live editing config in this repo |
+| [launchd.md](workflows/launchd.md) | Launchd labels in System Settings |
+| [impurity.md](workflows/impurity.md) | Live editing of config in this repo |
 | [neovim.md](workflows/neovim.md) | Editor setup and LSP |

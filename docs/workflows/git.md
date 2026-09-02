@@ -1,6 +1,7 @@
 # Git
 
-Two GitHub accounts: **personal** and **astra**. Auth uses SSH only (no `gh`).
+This workstation uses two GitHub accounts: personal and astra.
+Authentication uses SSH only. Do not use the `gh` CLI for auth.
 
 ## SSH keys
 
@@ -15,23 +16,25 @@ Generate a key:
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_personal -C "gonzalesalec@gmail.com"
 ```
 
-Add the `.pub` file to the matching GitHub account under **Settings → SSH keys**.
+Add the `.pub` file to the matching GitHub account under Settings → SSH keys.
 
 ## Passphrase and Keychain
 
 Keys use a passphrase. macOS Keychain stores it after the first load.
 
-One-time add after creating a key:
+Add a key once after you create it:
 
 ```bash
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519_personal
 ```
 
-Keys reload at login via `programs.zsh.profileExtra` and a launchd agent in `home/git.nix`.
+Keys reload at login through `programs.zsh.profileExtra` and a launchd agent in `home/git.nix`.
+System Settings shows that agent as Workstation. See [launchd.md](launchd.md).
 
 ## How git picks the key (Option A)
 
-Defined in `home/git.nix` under `gitAccounts`. Home-manager writes conditional includes to `~/.gitconfig`:
+`home/git.nix` defines accounts under `gitAccounts`.
+Home-manager writes conditional includes to `~/.gitconfig`:
 
 ```gitconfig
 [includeIf "gitdir:~/Development/astra/"]
@@ -49,7 +52,7 @@ Defined in `home/git.nix` under `gitAccounts`. Home-manager writes conditional i
 | `~/.dots/` | personal |
 | `~/Development/astra/` | astra |
 
-Use normal GitHub URLs — no host alias in the remote:
+Use normal GitHub URLs. Do not put a host alias in the remote:
 
 ```bash
 git clone git@github.com:USER/repo.git ~/Development/personal/repo
@@ -58,7 +61,8 @@ git clone git@github.com:ORG/repo.git ~/Development/astra/repo
 
 ## Test connection (manual SSH)
 
-`core.sshCommand` applies to git only, not bare `ssh`. Test with `-i`:
+`core.sshCommand` applies to git only. It does not apply to bare `ssh`.
+Test with `-i`:
 
 ```bash
 ssh -i ~/.ssh/id_ed25519_personal -T git@github.com
@@ -67,7 +71,7 @@ ssh -i ~/.ssh/id_ed25519_astra -T git@github.com
 
 ## Commit identity
 
-Same `gitdir:` includes as SSH. No manual switching.
+The same `gitdir:` includes set the commit identity. You do not switch accounts by hand.
 
 | Location | Name | Email |
 |----------|------|-------|
@@ -84,7 +88,7 @@ git config core.sshCommand
 git remote -v    # shows git@github.com:... — account comes from repo path
 ```
 
-Fix a remote to standard form:
+Fix a remote to the standard form:
 
 ```bash
 git remote set-url origin git@github.com:ORG/repo.git

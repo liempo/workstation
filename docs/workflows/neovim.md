@@ -1,6 +1,7 @@
 # Neovim
 
-Config lives in `home/.config/nvim/`. Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim).
+Config lives in `home/.config/nvim/`.
+Plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim).
 
 ## Layout
 
@@ -24,7 +25,8 @@ Enabled in `lua/config/lsp.lua`:
 | `tailwindcss` | Tailwind in HTML/CSS/JS/TS/Svelte |
 | `sourcekit` | Swift (via Xcode `sourcekit-lsp`) |
 
-Shared defaults: cmp capabilities, `on_attach` keymaps. Keymaps are capability-gated (code action, rename, format).
+Shared defaults: cmp capabilities and `on_attach` keymaps.
+Keymaps are capability-gated (code action, rename, format).
 
 ## Common keymaps
 
@@ -45,8 +47,10 @@ Leader key: space.
 :Lazy sync
 ```
 
-Use `drs --impure` when lazy.nvim needs to write files under config. See [impurity.md](impurity.md).
+Use `drs --impure` when lazy.nvim needs to write files under config.
+See [impurity.md](impurity.md).
 
 ## Packages
 
-Language servers are installed via `home/packages.nix`, not via Mason.
+Language servers are installed through `home/packages.nix`.
+Do not install them with Mason.

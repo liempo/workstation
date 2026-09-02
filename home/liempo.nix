@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    ./workstation.nix
     ./git.nix
     ./shell.nix
     ./packages.nix

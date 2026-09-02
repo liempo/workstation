@@ -8,7 +8,8 @@ All project repos live under `~/Development/`.
 └── astra/      # Astra work GitHub account
 ```
 
-This repo (`~/.dots`) is configuration only. It lives outside `~/Development/` but uses the **personal** git identity via an explicit `gitdir:~/.dots/` include in `home/liempo.nix`.
+This repo (`~/.dots`) holds configuration only. It lives outside `~/Development/`.
+It uses the personal git identity through an explicit `gitdir:~/.dots/` include in `home/git.nix`.
 
 ## Rules
 
@@ -18,7 +19,8 @@ This repo (`~/.dots`) is configuration only. It lives outside `~/Development/` b
 | `~/Development/astra/` | `alec@astraapplications.com` | astra |
 | `~/.dots/` | `gonzalesalec@gmail.com` | personal |
 
-Commit identity and SSH key both follow repo location. Remote URLs use plain `git@github.com:...`. See [git.md](git.md).
+Commit identity and SSH key both follow the repo location.
+Remote URLs use plain `git@github.com:...`. See [git.md](git.md).
 
 ## Clone examples
 
