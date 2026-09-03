@@ -1,6 +1,8 @@
 {config, ...}: {
   # Android Studio default SDK; platform-tools provides `adb` after SDK setup.
   home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
     ANDROID_HOME = "${config.home.homeDirectory}/Library/Android/sdk";
     ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Library/Android/sdk";
   };

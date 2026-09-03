@@ -2,7 +2,7 @@
 
 Shell config lives in `home/shell.nix`.
 Home-manager enables Zsh with oh-my-zsh (agnoster theme).
-Integrations: fzf, zoxide, direnv.
+Integrations: fzf, zoxide, direnv. `EDITOR` and `VISUAL` default to `nvim`.
 
 SSH key auto-load at login lives in `home/git.nix` next to `gitAccounts`.
 It is not in this module.
