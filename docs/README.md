@@ -9,7 +9,7 @@ Agents start at [AGENTS.md](../AGENTS.md). That file is the router and lists the
 | Path | Purpose |
 |------|---------|
 | `flake.nix` | Flake inputs and two darwin configurations |
-| `system/configuration.nix` | System packages, Homebrew casks, fonts, Stage Manager / native tiling, ⌘` Stage Manager toggle |
+| `system/configuration.nix` | System packages, Homebrew casks, fonts, Stage Manager / native tiling, ⌘Esc Stage Manager toggle, Tinycast shortcuts |
 | `home/liempo.nix` | Home-manager entry: imports and XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, helpers (`drs`, `vact`), auto tmux, fzf/zoxide/direnv |

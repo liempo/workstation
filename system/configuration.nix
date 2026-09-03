@@ -75,39 +75,72 @@
     EnableTiledWindowMargins = true;
   };
 
-  # ⌘` toggles Stage Manager (222); frees ⌘Space from Spotlight for Tinycast
-  system.defaults.CustomUserPreferences."com.apple.symbolichotkeys" = {
-    AppleSymbolicHotKeys = {
-      "27" = {
-        enabled = false;
-        value = {
-          parameters = [
-            96
-            50
-            1048576
-          ];
-          type = "standard";
+  # ⌘Esc toggles Stage Manager (222); ⌘Space and ⌘` belong to Tinycast.
+  system.defaults.CustomUserPreferences = {
+    "com.apple.symbolichotkeys" = {
+      AppleSymbolicHotKeys = {
+        "27" = {
+          enabled = false;
+          value = {
+            parameters = [
+              96
+              50
+              1048576
+            ];
+            type = "standard";
+          };
+        };
+        # Spotlight Search (⌘Space)
+        "64".enabled = false;
+        # Finder search window (⌘⌥Space)
+        "65".enabled = false;
+        "222" = {
+          enabled = true;
+          value = {
+            parameters = [
+              65535
+              53
+              1048576
+            ];
+            type = "standard";
+          };
         };
       };
-      # Spotlight Search (⌘Space)
-      "64" = {
-        enabled = false;
+    };
+
+    # Current Tinycast preferences. ⌘Space opens the palette; no app shortcut is bound.
+    "com.tinycast.app" = {
+      boundAppBundleIDs = [];
+      boundCustomCommandIDs = [];
+      boundQuicklinkIDs = [];
+      calendarEnabled = true;
+      clipboardRetentionDays = 1;
+      compactMode = false;
+      favoriteApps = [
+        "com.mitchellh.ghostty"
+        "company.thebrowser.Browser"
+      ];
+      hiddenLauncherItems = [
+        "com.tinycast.app"
+        "command:quit"
+        "command:check-for-updates"
+        "command:about"
+        "command:import-from-raycast"
+        "command:export-settings"
+        "command:support"
+        "command:import-settings"
+        "command:search-emoji"
+        "com.apple.Terminal"
+      ];
+      hiddenLauncherKinds = [];
+      "hotkey.togglePalette" = "{\"combo\":{\"_0\":{\"carbonKeyCode\":49,\"carbonModifiers\":256}}}";
+      launcherAliases = {
+        "com.mitchellh.ghostty" = "Terminal";
+        "command:settings" = "tinycast";
       };
-      # Finder search window (⌘⌥Space)
-      "65" = {
-        enabled = false;
-      };
-      "222" = {
-        enabled = true;
-        value = {
-          parameters = [
-            96
-            50
-            1048576
-          ];
-          type = "standard";
-        };
-      };
+      showInMenuBar = false;
+      windowManagementEnabled = true;
+      windowManagementGap = 16;
     };
   };
 
