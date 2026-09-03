@@ -1,4 +1,4 @@
-{ lib, workstationBundleId, ... }:
+{ lib, ... }:
 
 let
   gitAccounts = {
@@ -83,13 +83,12 @@ in
   '';
 
   # Load SSH keys into agent at graphical login (Keychain must be unlocked).
-  # Label + AssociatedBundleIdentifiers → System Settings shows "Workstation".
+  # ProgramArguments[0] is /bin/sh → System Settings shows "sh".
   launchd.agents.ssh-add-keys = {
     enable = true;
     waitForNixStore = false;
     config = {
       Label = "com.liempo.ssh-add-keys";
-      AssociatedBundleIdentifiers = [ workstationBundleId ];
       ProgramArguments = [
         "/bin/sh"
         "-c"

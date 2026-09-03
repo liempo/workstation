@@ -40,7 +40,6 @@ Start at [docs/README.md](docs/README.md). Do not invent workflows that contradi
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, oh-my-zsh, fzf/zoxide/direnv, auto tmux, `drs`/`vact` |
 | `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
-| `home/workstation.nix` | Stub Workstation.app for launchd Settings labels |
 | `home/.config/nvim/` | Neovim (may use `impurity.link`) |
 
 ## Impurity

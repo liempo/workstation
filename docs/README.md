@@ -14,7 +14,6 @@ Agents start at [AGENTS.md](../AGENTS.md). That file is the router and lists the
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, helpers (`drs`, `vact`), auto tmux, fzf/zoxide/direnv |
 | `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
-| `home/workstation.nix` | Stub Workstation.app for launchd Settings labels |
 | `home/.config/` | Neovim, tmux, Ghostty config files |
 | `home/.ideavimrc` | IntelliJ/IdeaVim keybindings |
 

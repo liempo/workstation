@@ -28,8 +28,8 @@ Add a key once after you create it:
 ssh-add --apple-use-keychain ~/.ssh/id_ed25519_personal
 ```
 
-Keys reload at login through `programs.zsh.profileExtra` and a launchd agent in `home/git.nix`.
-System Settings shows that agent as Workstation. See [launchd.md](launchd.md).
+Keys reload at login through `programs.zsh.profileExtra` and a launchd agent in `home/git.nix`
+(`com.liempo.ssh-add-keys`; Settings shows `sh`). See [launchd.md](launchd.md).
 
 ## How git picks the key (Option A)
 
