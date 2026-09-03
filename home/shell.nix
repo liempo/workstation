@@ -1,6 +1,15 @@
-{ ... }:
+{ config, ... }:
 
 {
+  # Android Studio default SDK; platform-tools provides `adb` after SDK setup.
+  home.sessionVariables = {
+    ANDROID_HOME = "${config.home.homeDirectory}/Library/Android/sdk";
+    ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Library/Android/sdk";
+  };
+  home.sessionPath = [
+    "${config.home.homeDirectory}/Library/Android/sdk/platform-tools"
+  ];
+
   programs = {
     fzf = {
       enable = true;

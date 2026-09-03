@@ -40,4 +40,11 @@ Installed via home-manager: git, direnv, zoxide (also integrated in zsh).
 
 ## GUI apps
 
-Homebrew casks (declarative): Arc, Ghostty, Tailscale.
+Declared in `system/configuration.nix` via Homebrew:
+
+| Source | Apps |
+|--------|------|
+| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio |
+| Mac App Store (`masApps`) | Xcode |
+
+Android SDK lives at `~/Library/Android/sdk` (Studio default). Home-manager sets `ANDROID_HOME` / `ANDROID_SDK_ROOT` and puts `platform-tools` on `PATH` for `adb`.

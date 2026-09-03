@@ -26,7 +26,11 @@
       "ghostty"
       "stats"
       "tailscale-app"
+      "android-studio"
     ];
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 
   # nix-darwin launchd labels: com.liempo.* (was org.nixos.*)

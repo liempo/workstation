@@ -46,6 +46,16 @@ These servers are installed globally for Neovim:
 
 See [neovim.md](neovim.md).
 
+## Xcode and Android
+
+| Tool | How |
+|------|-----|
+| Xcode | `homebrew.masApps` (App Store) in `system/configuration.nix` |
+| Android Studio | Homebrew cask `android-studio` |
+| Android SDK / `adb` | Studio installs under `~/Library/Android/sdk`; home-manager sets `ANDROID_HOME`, `ANDROID_SDK_ROOT`, and `platform-tools` on `PATH` (`home/shell.nix`) |
+
+The SDK is not a Nix package. After Studio installs platform-tools, `adb` is on `PATH` in new shells.
+
 ## Python virtualenvs
 
 The `vact` shell function activates `./.venv` when that directory exists.
