@@ -56,7 +56,7 @@ Declared in `system/configuration.nix` via Homebrew:
 
 | Source | Apps |
 |--------|------|
-| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Tinycast |
+| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Tinycast, Zoom |
 
 Xcode is installed manually from the App Store (not managed by `drs`).
 Use it for SourceKit in Neovim and native Apple builds.

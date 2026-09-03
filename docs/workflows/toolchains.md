@@ -17,10 +17,10 @@ These packages stay on `PATH` after a rebuild (`home/packages.nix`):
 Most projects need no extra setup.
 To change versions, edit `home/packages.nix` and run `drs`.
 
-This repo adds formatters via `.envrc` (not global packages):
+This repo adds formatters and `nixd` via `.envrc` (not global packages):
 
 ```bash
-use nix -p stylua alejandra
+use nix -p stylua alejandra nixd
 ```
 
 ## direnv (Tier 2)
@@ -45,7 +45,8 @@ nix-direnv caches builds so reloads stay fast.
 
 ## Language servers
 
-Mason installs most Neovim LSPs (`lua_ls`, `nixd`, `ts_ls`, `svelte`, `tailwindcss`).
+Mason installs most Neovim LSPs (`lua_ls`, `ts_ls`, `svelte`, `tailwindcss`).
+`nixd` is not in Mason — use direnv or system PATH (this repo's `.envrc`).
 `denols` uses the global `deno` package; SourceKit uses Xcode.
 
 See [neovim.md](neovim.md).

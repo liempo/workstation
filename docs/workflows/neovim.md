@@ -85,7 +85,7 @@ vim.lsp.enable({ "ts_ls" })
 Call `require("config.project").setup_conform(...)` from `.nvim.lua`.
 Formatter binaries must be on `PATH` when nvim starts.
 
-For this repo, `.envrc` adds `stylua` and `alejandra` via direnv (`direnv allow` once).
+For this repo, `.envrc` adds `stylua`, `alejandra`, and `nixd` via direnv (`direnv allow` once).
 Open nvim from a shell after `cd` into the project so direnv has loaded.
 
 Other projects use their own `.envrc` or tooling (e.g. `prettierd` for TypeScript).
@@ -95,7 +95,7 @@ Other projects use their own `.envrc` or tooling (e.g. `prettierd` for TypeScrip
 | Server | Source | Use |
 |--------|--------|-----|
 | `lua_ls` | Mason | Lua |
-| `nixd` | Mason | Nix |
+| `nixd` | direnv / PATH | Nix (not in Mason registry) |
 | `ts_ls` | Mason | TypeScript/JavaScript |
 | `svelte` | Mason | Svelte |
 | `tailwindcss` | Mason | Tailwind in HTML/CSS/JS/TS/Svelte |

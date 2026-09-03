@@ -32,6 +32,7 @@
       "tailscale-app"
       "android-studio"
       "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
+      "zoom"
     ];
     # Xcode: install manually from the App Store (not masApps — mas re-downloads on drs).
   };

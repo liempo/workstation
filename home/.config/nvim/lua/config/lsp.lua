@@ -41,11 +41,11 @@ function M.setup()
 	require("mason-lspconfig").setup({
 		ensure_installed = {
 			"lua_ls",
-			"nixd",
 			"ts_ls",
 			"svelte",
 			"tailwindcss",
 		},
+		-- nixd is not in Mason; provide via direnv or system PATH.
 		-- Projects enable servers via trusted .nvim.lua (vim.o.exrc).
 		automatic_enable = false,
 	})
