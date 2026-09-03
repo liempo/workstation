@@ -47,6 +47,7 @@
 
   # Undo a previous cosmetic rewrite of Determinate's nix-hook to a store
   # binary (breaks early boot). No-op once ProgramArguments[0] is /bin/sh.
+  # Also: keep Spotlight indexing off; reload symbolic hotkeys after defaults write.
   system.activationScripts.postActivation.text = ''
     plist=/Library/LaunchDaemons/systems.determinate.nix-installer.nix-hook.plist
     if [[ -f "$plist" ]]; then
@@ -58,6 +59,11 @@
         /bin/launchctl bootstrap system "$plist" 2>/dev/null || true
       fi
     fi
+
+    echo "disabling Spotlight indexing" >&2
+    /usr/bin/mdutil -a -i off >/dev/null 2>&1 || true
+
+    /usr/bin/sudo -u liempo /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u || true
   '';
 
   # macOS preferences: Stage Manager + native tiling (no third-party WM)
@@ -72,7 +78,7 @@
     EnableTiledWindowMargins = true;
   };
 
-  # ⌘` toggles Stage Manager (symbolic hotkey 222); disables window-cycle (27)
+  # ⌘` toggles Stage Manager (222); frees ⌘Space from Spotlight for Tinycast
   system.defaults.CustomUserPreferences."com.apple.symbolichotkeys" = {
     AppleSymbolicHotKeys = {
       "27" = {
@@ -85,6 +91,14 @@
           ];
           type = "standard";
         };
+      };
+      # Spotlight Search (⌘Space)
+      "64" = {
+        enabled = false;
+      };
+      # Finder search window (⌘⌥Space)
+      "65" = {
+        enabled = false;
       };
       "222" = {
         enabled = true;
