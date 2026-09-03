@@ -56,7 +56,9 @@ Declared in `system/configuration.nix` via Homebrew:
 
 | Source | Apps |
 |--------|------|
-| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio |
-| Mac App Store (`masApps`) | Xcode |
+| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Tinycast |
+
+Xcode is installed manually from the App Store (not managed by `drs`).
+Use it for SourceKit in Neovim and native Apple builds.
 
 Android SDK lives at `~/Library/Android/sdk` (Studio default). Home-manager sets `ANDROID_HOME` / `ANDROID_SDK_ROOT` and puts `platform-tools` on `PATH` for `adb`.

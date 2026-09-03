@@ -54,7 +54,7 @@ See [neovim.md](neovim.md).
 
 | Tool | How |
 |------|-----|
-| Xcode | `homebrew.masApps` (App Store) in `system/configuration.nix` |
+| Xcode | Manual App Store install (not in `drs`; needed for SourceKit / iOS builds) |
 | Android Studio | Homebrew cask `android-studio` |
 | Android SDK / `adb` | Studio installs under `~/Library/Android/sdk`; home-manager sets `ANDROID_HOME`, `ANDROID_SDK_ROOT`, and `platform-tools` on `PATH` (`home/shell.nix`) |
 

@@ -33,9 +33,7 @@
       "android-studio"
       "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
     ];
-    masApps = {
-      Xcode = 497799835;
-    };
+    # Xcode: install manually from the App Store (not masApps — mas re-downloads on drs).
   };
 
   # nix-darwin launchd labels: com.liempo.* (was org.nixos.*)
