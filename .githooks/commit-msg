@@ -1,0 +1,20 @@
+#!/bin/sh
+# Enforce Conventional Commits-style subjects for this repository.
+
+set -eu
+
+message_file=$1
+subject=$(head -n 1 "$message_file")
+pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([[:alnum:]][[:alnum:]./_-]*\))?!?: .+'
+
+if ! printf '%s\n' "$subject" | grep -Eq "$pattern"; then
+  cat >&2 <<'EOF'
+Invalid commit subject. Use Conventional Commits:
+  type(optional-scope): imperative summary
+
+Allowed types: build, chore, ci, docs, feat, fix, perf, refactor, revert,
+style, test.
+Example: feat(shell): set neovim as default editor
+EOF
+  exit 1
+fi

@@ -80,6 +80,16 @@ The same `gitdir:` includes set the commit identity. You do not switch accounts 
 | `~/.dots/` | Alec | gonzalesalec@gmail.com |
 | `~/Development/astra/` | Alec | alec@astraapplications.com |
 
+## Commit messages
+
+This repository enforces [Conventional Commits](https://www.conventionalcommits.org/) through the tracked `.githooks/commit-msg` hook. Enable it after cloning:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+Use `type(optional-scope): imperative summary`; supported types are `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, and `test`.
+
 ## Verify in a repo
 
 ```bash
