@@ -21,12 +21,19 @@
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
+    taps = [
+      {
+        name = "abue-ammar/tinycast";
+        trusted = true; # Homebrew 6+ HOMEBREW_REQUIRE_TAP_TRUST
+      }
+    ];
     casks = [
       "arc"
       "ghostty"
       "stats"
       "tailscale-app"
       "android-studio"
+      "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
     ];
     masApps = {
       Xcode = 497799835;
