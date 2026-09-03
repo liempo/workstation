@@ -29,6 +29,7 @@ Start at [docs/README.md](docs/README.md). Do not invent workflows that contradi
 6. This repo (`~/.dots`) is personal account. Project code lives under `~/Development/personal/` or `~/Development/astra/`.
 7. Keep docs short and accurate. Update the matching file under `docs/workflows/` when behavior changes.
 8. Validate Nix changes with `nix build .#darwinConfigurations.workstation.config.system.build.toplevel` when `drs` / sudo is unavailable.
+9. When access to or context from `homestation` is needed or requested, connect as the current user with `ssh homestation` (user `liempo`).
 
 ## Key paths
 
