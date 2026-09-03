@@ -69,6 +69,9 @@ vim.cmd([[autocmd BufWritePre <buffer> %s/\s\+$//e]])
 -- Disable indentation on switch (C)
 vim.o.cinoptions = "l1"
 
+-- Project-local config: trusted .nvim.lua / .nvimrc / .exrc in cwd (:trust)
+vim.o.exrc = true
+
 -- Lazy Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

@@ -13,7 +13,7 @@ Agents start at [AGENTS.md](../AGENTS.md). That file is the router and lists the
 | `home/liempo.nix` | Home-manager entry: imports and XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, helpers (`drs`, `vact`), auto tmux, fzf/zoxide/direnv |
-| `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
+| `home/packages.nix` | User packages (nodejs, bun, deno) |
 | `home/.config/` | Neovim, tmux, Ghostty config files |
 | `home/.ideavimrc` | IntelliJ/IdeaVim keybindings |
 

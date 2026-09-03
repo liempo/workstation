@@ -2,12 +2,9 @@
   impurity,
   dots,
   ...
-}:
-
-let
+}: let
   dotconfig = "${dots}/home";
-in
-{
+in {
   imports = [
     ./git.nix
     ./shell.nix

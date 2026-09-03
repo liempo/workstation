@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-let
+{lib, ...}: let
   gitAccounts = {
     personal = {
       name = "Alec";
@@ -21,23 +19,21 @@ let
 
   mkGitSshCommand = key: "ssh -i ~/.ssh/${key} -o IdentitiesOnly=yes";
 
-  mkAccountInclude =
-    account: gitdir: {
-      condition = "gitdir:${gitdir}";
-      contents = {
-        user = {
-          name = account.name;
-          email = account.email;
-        };
-        core.sshCommand = mkGitSshCommand account.sshKey;
+  mkAccountInclude = account: gitdir: {
+    condition = "gitdir:${gitdir}";
+    contents = {
+      user = {
+        name = account.name;
+        email = account.email;
       };
+      core.sshCommand = mkGitSshCommand account.sshKey;
     };
+  };
 
   sshKeys = lib.unique (
     lib.map (account: account.sshKey) (lib.attrValues gitAccounts)
   );
-in
-{
+in {
   _module.args = {
     inherit gitAccounts;
   };
@@ -52,9 +48,9 @@ in
       core.sshCommand = mkGitSshCommand gitAccounts.personal.sshKey;
     };
     includes =
-      lib.concatMap (gitdir: [ (mkAccountInclude gitAccounts.personal gitdir) ])
-        gitAccounts.personal.gitdirs
-      ++ [ (mkAccountInclude gitAccounts.astra gitAccounts.astra.gitdir) ];
+      lib.concatMap (gitdir: [(mkAccountInclude gitAccounts.personal gitdir)])
+      gitAccounts.personal.gitdirs
+      ++ [(mkAccountInclude gitAccounts.astra gitAccounts.astra.gitdir)];
   };
 
   programs.ssh = {

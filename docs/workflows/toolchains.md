@@ -1,6 +1,7 @@
 # Toolchains
 
-Home-manager installs JavaScript runtimes and language servers globally.
+Home-manager installs JavaScript runtimes globally.
+Language servers for Neovim come from Mason (see [neovim.md](neovim.md)).
 Use direnv for per-project overrides when a project needs them.
 
 ## Global defaults (Tier 1)
@@ -15,6 +16,12 @@ These packages stay on `PATH` after a rebuild (`home/packages.nix`):
 
 Most projects need no extra setup.
 To change versions, edit `home/packages.nix` and run `drs`.
+
+This repo adds formatters via `.envrc` (not global packages):
+
+```bash
+use nix -p stylua alejandra
+```
 
 ## direnv (Tier 2)
 
@@ -38,11 +45,8 @@ nix-direnv caches builds so reloads stay fast.
 
 ## Language servers
 
-These servers are installed globally for Neovim:
-
-- `lua-language-server`, `nixd`
-- `typescript-language-server`, `svelte-language-server`, `tailwindcss-language-server`
-- Deno and SourceKit use the `deno` package and Xcode
+Mason installs most Neovim LSPs (`lua_ls`, `nixd`, `ts_ls`, `svelte`, `tailwindcss`).
+`denols` uses the global `deno` package; SourceKit uses Xcode.
 
 See [neovim.md](neovim.md).
 

@@ -39,7 +39,7 @@ Start at [docs/README.md](docs/README.md). Do not invent workflows that contradi
 | `home/liempo.nix` | Home-manager entry: imports + XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
 | `home/shell.nix` | Zsh, oh-my-zsh, fzf/zoxide/direnv, auto tmux, `drs`/`vact` |
-| `home/packages.nix` | User packages (nodejs, bun, deno, LSPs) |
+| `home/packages.nix` | User packages (nodejs, bun, deno); LSPs via Mason |
 | `home/.config/nvim/` | Neovim (may use `impurity.link`) |
 
 ## Impurity

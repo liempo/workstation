@@ -6,31 +6,17 @@ return {
 		end,
 	},
 
-	{ -- Context based comments
+	{ -- Context based comments (configured per project via config.project)
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		lazy = true,
 	},
 
 	{ -- Surround
 		"tpope/vim-surround",
 	},
 
-	{
-		-- Formatter
+	{ -- Formatter (configured per project via config.project)
 		"stevearc/conform.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			local conform = require("conform")
-			conform.setup({
-				formatters_by_ft = {
-					swift = { "swift_format" },
-					typescript = { "prettierd" },
-				},
-				format_on_save = function(_)
-					return { timeout_ms = 200, lsp_fallback = true }
-				end,
-				log_level = vim.log.levels.ERROR,
-			})
-		end,
+		lazy = true,
 	},
-
 }

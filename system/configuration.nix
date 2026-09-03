@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   system.primaryUser = "liempo";
 
   # CLI tools (replaces brew install)

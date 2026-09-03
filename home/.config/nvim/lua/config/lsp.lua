@@ -37,6 +37,19 @@ function M.setup()
 		capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 	end
 
+	require("mason").setup()
+	require("mason-lspconfig").setup({
+		ensure_installed = {
+			"lua_ls",
+			"nixd",
+			"ts_ls",
+			"svelte",
+			"tailwindcss",
+		},
+		-- Projects enable servers via trusted .nvim.lua (vim.o.exrc).
+		automatic_enable = false,
+	})
+
 	vim.lsp.config("*", {
 		capabilities = capabilities,
 		on_attach = on_attach,
@@ -56,6 +69,7 @@ function M.setup()
 
 	vim.lsp.config("nixd", {})
 
+	-- Uses system `deno` from home/packages.nix
 	vim.lsp.config("denols", {
 		root_markers = { "deno.json", "deno.jsonc" },
 	})
@@ -80,19 +94,12 @@ function M.setup()
 		},
 	})
 
+	-- Xcode provides sourcekit-lsp; not installed via Mason
 	vim.lsp.config("sourcekit", {
 		cmd = { "sourcekit-lsp" },
 	})
 
-	vim.lsp.enable({
-		"lua_ls",
-		"nixd",
-		"denols",
-		"ts_ls",
-		"svelte",
-		"tailwindcss",
-		"sourcekit",
-	})
+	-- No global vim.lsp.enable — each project .nvim.lua enables what it needs.
 end
 
 return M
