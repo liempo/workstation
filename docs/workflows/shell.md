@@ -30,6 +30,11 @@ When you exit or detach from tmux, the terminal window closes.
 
 Nested tmux is avoided because the check skips when `$TMUX` is set.
 
+The tmux prefix is **Ctrl+Space**, followed by a command key (for example, `c`
+creates a window). Ghostty sends it as CSI-u (`csi:32;5u`), rather than a NUL
+byte through its `text` action. After changing Ghostty config, run `drs` and
+reload Ghostty configuration with **Cmd+Shift+,**.
+
 Closing or detaching a terminal only drops the client. Sessions keep running until you kill the last pane, kill the tmux server, or reboot.
 
 ## Helpers
