@@ -77,6 +77,9 @@
 
   # ⌘Esc toggles Stage Manager (222); ⌘Space and ⌘` belong to Tinycast.
   system.defaults.CustomUserPreferences = {
+    # Use key repeat instead of macOS's press-and-hold accent picker in Ghostty.
+    "com.mitchellh.ghostty".ApplePressAndHoldEnabled = false;
+
     "com.apple.symbolichotkeys" = {
       AppleSymbolicHotKeys = {
         "27" = {
