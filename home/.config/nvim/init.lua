@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap("n", "<Right>", [[:echoe "Use 'l'"<CR>]], { noremap = tr
 vim.api.nvim_set_keymap("n", "<Up>", [[:echoe "Use 'k'"<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Down>", [[:echoe "Use 'j'"<CR>]], { noremap = true, silent = true })
 
--- Move cursos for J and K
+-- Move selected lines with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 
--- Deleting (using system clipboard)
+-- Delete without changing registers
 vim.keymap.set("n", "<leader>d", '"_d')
 vim.keymap.set("v", "<leader>d", '"_d')
 
@@ -74,7 +74,7 @@ vim.o.exrc = true
 
 -- Lazy Plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",

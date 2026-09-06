@@ -63,6 +63,7 @@ The SDK is not a Nix package. After Studio installs platform-tools, `adb` is on 
 
 ## Python virtualenvs
 
-The `vact` shell function activates `./.venv` when that directory exists.
-It deactivates when you leave the directory tree.
+Run `vact` to activate `./.venv` when that directory exists.
+Run it again outside the active virtualenv's parent directory tree to deactivate.
+It does not run automatically on directory changes.
 This path is separate from Nix and direnv.

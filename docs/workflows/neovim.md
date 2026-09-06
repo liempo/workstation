@@ -127,7 +127,7 @@ Leader key: space.
 ```
 
 Mason installs missing servers on startup after plugins load.
-Use `drs --impure` when lazy.nvim needs to write files under config.
+Plugin updates work in pure mode; use `drs --impure` only for live config edits.
 See [impurity.md](impurity.md).
 
 ## Packages

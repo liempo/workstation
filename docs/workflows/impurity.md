@@ -6,8 +6,8 @@ Without impurity, home-manager copies those files from the Nix store.
 ## Why
 
 Pure home-manager deploys make `~/.config/nvim` read-only.
-lazy.nvim and live editing need a writable tree.
-Impure mode symlinks config back to `~/.dots/home/.config/nvim`.
+Use impure mode for live config editing: it symlinks config back to
+`~/.dots/home/.config/nvim`. Plugin installs and updates work in either mode.
 
 ## What uses impurity
 
@@ -32,15 +32,14 @@ The `drs --impure` function does this for you.
 ## Workflow
 
 1. If `~/.config/nvim` mixes files and store links, remove it once: `rm -rf ~/.config/nvim`.
-2. Run `drs --impure` while you edit Neovim config or run `:Lazy sync`.
+2. Run `drs --impure` for live Neovim config edits.
 3. Confirm the link: `readlink ~/.config/nvim` must point at `~/.dots/home/.config/nvim`.
 4. Edit files under `~/.dots/home/.config/nvim/` (or through the live symlink).
 5. Commit the changes in this repo.
-6. Run `drs` to return to reproducible pure mode.
+6. Run `drs` to deploy config from the Nix store again.
 
 ## lazy.nvim lockfile
 
-In pure mode, the lockfile lives at `~/.local/state/nvim/lazy-lock.json` (writable).
-It is not stored in this repo.
-
-In impure mode, lazy.nvim can write into the repo if it uses the default lockfile path.
+In both modes, the lockfile lives at `~/.local/state/nvim/lazy-lock.json` (writable).
+Plugins live under `~/.local/share/nvim/lazy`, outside the config directory.
+The lockfile is not tracked, so the flake does not pin plugin versions.

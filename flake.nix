@@ -14,12 +14,12 @@
     impurity.url = "github:outfoxxed/impurity.nix";
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
-    nixpkgs,
     nix-darwin,
     home-manager,
     impurity,
+    ...
   }: let
     system = "aarch64-darwin";
 

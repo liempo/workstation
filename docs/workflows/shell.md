@@ -30,6 +30,8 @@ When you exit or detach from tmux, the terminal window closes.
 
 Nested tmux is avoided because the check skips when `$TMUX` is set.
 
+Tmux uses built-in status formatting (no TPM/plugins); `PREFIX` appears while the prefix is active.
+
 The tmux prefix is **Ctrl+Space**, followed by a command key (for example, `c`
 creates a window). Ghostty sends it as CSI-u (`csi:32;5u`), rather than a NUL
 byte through its `text` action. After changing Ghostty config, run `drs` and
@@ -57,7 +59,8 @@ See [rebuild.md](rebuild.md).
 
 Installed at system level (`system/configuration.nix`): tmux, neovim, zoxide, fzf, ripgrep, pi-coding-agent.
 
-Installed via home-manager: git, direnv, zoxide (also integrated in zsh).
+Installed via home-manager: git, gh, direnv, nodejs, bun, deno, fzf, zoxide.
+Fzf and zoxide also have Zsh integrations.
 
 ## GUI apps
 

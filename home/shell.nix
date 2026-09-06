@@ -137,7 +137,7 @@
               source ./.venv/bin/activate
             fi
           else
-            parentdir="$(dirname "$VIRTUAL_ENV")"
+            local parentdir="$(dirname "$VIRTUAL_ENV")"
             if [[ "$PWD"/ != "$parentdir"/* ]]; then
               deactivate
             fi

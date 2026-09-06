@@ -47,6 +47,6 @@ Start at [docs/README.md](docs/README.md). Do not invent workflows that contradi
 
 Default: pure mode. Config is copied from the Nix store.
 
-Impure mode (`drs --impure`) is for live Neovim edits and writable lazy.nvim when the user requests it. Details: [impurity.md](docs/workflows/impurity.md).
+Impure mode (`drs --impure`) is for live Neovim config edits when the user requests it. Details: [impurity.md](docs/workflows/impurity.md).
 
 After impure work: commit real source files in this repo, then return to pure with `drs` when the user wants a locked deploy.
