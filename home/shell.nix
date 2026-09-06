@@ -31,7 +31,7 @@
       enable = true;
       oh-my-zsh = {
         enable = true;
-        theme = "agnoster";
+        theme = "afowler";
         plugins = [
           "git"
         ];
@@ -124,12 +124,6 @@
         bindkey '^K' up-line-or-history
         bindkey '^L' forward-char
         bindkey '^H' backward-char
-
-        prompt_context() {
-          if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-            prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-          fi
-        }
 
         vact() {
           if [[ -z "$VIRTUAL_ENV" ]]; then
