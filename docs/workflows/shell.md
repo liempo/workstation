@@ -52,7 +52,7 @@ Closing or detaching a terminal only drops the client. Sessions keep running unt
 
 ### drs
 
-F1-themed shorthand: Drag Reduction System equals deploy config changes.
+`drs` means **darwin rebuild switch**.
 See [rebuild.md](rebuild.md).
 
 ## System tools

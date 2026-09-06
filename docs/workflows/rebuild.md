@@ -1,6 +1,6 @@
 # Rebuild
 
-Apply configuration changes with the `drs` shell function.
+Apply configuration changes with `drs` (**darwin rebuild switch**).
 `drs` is defined in `home/shell.nix`.
 
 ## Commands
