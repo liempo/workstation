@@ -35,6 +35,10 @@ creates a window). Ghostty sends it as CSI-u (`csi:32;5u`), rather than a NUL
 byte through its `text` action. After changing Ghostty config, run `drs` and
 reload Ghostty configuration with **Cmd+Shift+,**.
 
+`system/configuration.nix` disables macOS input-source shortcuts (symbolic
+hotkeys 60 and 61) so macOS does not intercept the prefix. These are per-user
+preferences and apply to built-in and external keyboards; apply with `drs`.
+
 Closing or detaching a terminal only drops the client. Sessions keep running until you kill the last pane, kill the tmux server, or reboot.
 
 ## Helpers
@@ -61,7 +65,7 @@ Declared in `system/configuration.nix` via Homebrew:
 
 | Source | Apps |
 |--------|------|
-| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Tinycast, Zoom |
+| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Orca, Tinycast, Zoom |
 
 Xcode is installed manually from the App Store (not managed by `drs`).
 Use it for SourceKit in Neovim and native Apple builds.

@@ -24,6 +24,10 @@
         name = "abue-ammar/tinycast";
         trusted = true; # Homebrew 6+ HOMEBREW_REQUIRE_TAP_TRUST
       }
+      {
+        name = "stablyai/orca";
+        trusted = true;
+      }
     ];
     casks = [
       "arc"
@@ -31,6 +35,7 @@
       "stats"
       "tailscale-app"
       "android-studio"
+      "stablyai/orca/orca" # agent environment; not the unrelated Homebrew core orca
       "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
       "zoom"
     ];
@@ -93,6 +98,10 @@
             type = "standard";
           };
         };
+        # Disable input-source shortcuts for this user on all keyboards.
+        # Reserve Ctrl+Space for the tmux prefix.
+        "60".enabled = false; # Previous input source (⌃Space)
+        "61".enabled = false; # Next input source (⌃⌥Space)
         # Spotlight Search (⌘Space)
         "64".enabled = false;
         # Finder search window (⌘⌥Space)

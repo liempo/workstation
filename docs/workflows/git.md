@@ -1,7 +1,11 @@
 # Git
 
 This workstation uses two GitHub accounts: personal and astra.
-Authentication uses SSH only. Do not use the `gh` CLI for auth.
+Git fetch/push uses SSH. GitHub API operations may use `gh` OAuth authentication;
+this does not replace the folder-based SSH configuration. Do not run `gh auth setup-git`.
+Orca uses local `gh` credentials for GitHub API features. The active `gh` account
+is independent of Git's folder-based SSH identity; automatic API account routing
+is not configured.
 
 ## SSH keys
 

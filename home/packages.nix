@@ -3,5 +3,6 @@
     nodejs
     bun
     deno
+    gh
   ];
 }
