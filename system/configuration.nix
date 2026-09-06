@@ -24,10 +24,6 @@
         name = "abue-ammar/tinycast";
         trusted = true; # Homebrew 6+ HOMEBREW_REQUIRE_TAP_TRUST
       }
-      {
-        name = "stablyai/orca";
-        trusted = true;
-      }
     ];
     casks = [
       "arc"
@@ -35,7 +31,6 @@
       "stats"
       "tailscale-app"
       "android-studio"
-      "stablyai/orca/orca" # agent environment; not the unrelated Homebrew core orca
       "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
       "zoom"
     ];
