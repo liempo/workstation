@@ -30,6 +30,9 @@ window-padding-y = 5
 confirm-close-surface = false
 macos-titlebar-proxy-icon = hidden
 
+# Use the versioned custom icon in this config directory.
+macos-icon = custom
+
 font-family = "FiraCode Nerd Font Mono"
 font-style = Retina
 font-style-bold = Bold
