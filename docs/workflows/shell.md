@@ -44,6 +44,40 @@ preferences and apply to built-in and external keyboards; apply with `drs`.
 
 Closing or detaching a terminal only drops the client. Sessions keep running until you kill the last pane, kill the tmux server, or reboot.
 
+### SSH windows (no nested tmux)
+
+| Keys after Ctrl+Space | Action |
+|----------------------|--------|
+| `S` (Shift+S) | Prompt for a host/SSH alias and create an `ssh:HOST` window |
+| `%` | Side-by-side split; inherit this window's SSH host |
+| `"` | Top/bottom split; inherit this window's SSH host |
+| `c` | Standard new **local** window, even from an SSH window |
+
+Enter `devstation`, another SSH alias, or `user@host`; blank input or Ctrl+C cancels.
+Put ports, keys, and jump hosts in `~/.ssh/config`, not the prompt.
+Each SSH window records its destination in the window-local `@ssh-host` option;
+its new splits open independent SSH shells on that host. Other windows are unaffected.
+Local splits inherit the current pane's local directory. Remote splits start in the
+remote login directory, not the current remote directory. Existing Ctrl+H/J/K/L
+navigation, mouse support, H/L window switching, and theme remain unchanged.
+
+This is opt-in: manually typing `ssh` in a local window does not mark it as remote.
+Only the `%`/`"` bindings use inheritance; raw `tmux split-window` or other bindings
+are not intercepted. There is no remote tmux and no helper to install on devstation.
+Failed SSH panes remain visible (`remain-on-exit failed`); close with prefix `x`,
+or retry with `:respawn-pane` from the tmux command prompt. Normal logout closes
+the pane. SSH disconnection does not preserve remote processes as remote tmux would.
+
+`home/scripts/tmux-ssh-window.sh` is packaged by Home Manager as `tmux-ssh-window`.
+It uses tmux and OpenSSH only—no TPM, additional session manager, or SSH plugin.
+After rebuilding, use a new tmux server or reload with
+`tmux source-file ~/.config/tmux/tmux.conf` from the updated shell environment.
+Validate the helper without real SSH connections or touching live sessions:
+
+```sh
+python3 tests/tmux-ssh-window.py  # requires Python 3, Bash, tmux
+```
+
 ## Helpers
 
 | Command | Alias | Purpose |

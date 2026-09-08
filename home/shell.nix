@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, pkgs, ...}: {
   # Android Studio default SDK; platform-tools provides `adb` after SDK setup.
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -8,6 +8,15 @@
   };
   home.sessionPath = [
     "${config.home.homeDirectory}/Library/Android/sdk/platform-tools"
+  ];
+
+  # Use the existing tmux/OpenSSH packages; no TPM or SSH plugins.
+  home.packages = [
+    (pkgs.writeShellApplication {
+      name = "tmux-ssh-window";
+      runtimeInputs = [ pkgs.tmux pkgs.openssh ];
+      text = builtins.readFile ./scripts/tmux-ssh-window.sh;
+    })
   ];
 
   programs = {
