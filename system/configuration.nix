@@ -28,6 +28,7 @@
     casks = [
       "arc"
       "ghostty"
+      "moonlight"
       "stats"
       "tailscale-app"
       "android-studio"
