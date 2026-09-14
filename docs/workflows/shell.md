@@ -15,7 +15,7 @@ Interactive zsh (not already inside tmux) runs `_tmux_auto_attach` on startup.
 | Situation | Behavior |
 |-----------|----------|
 | No tmux server | Create session `main` |
-| tmux already running | fzf menu: attach `main`, pick a session, new session, or shell only |
+| tmux already running | fzf menu: attach `main`, pick a session, new session, reset `main`, or shell only |
 | `TMUX_AUTO_MAIN=1` | Always attach/create `main` (old behavior) |
 | `TMUX_AUTO=0` | Skip auto tmux |
 
@@ -24,7 +24,10 @@ Interactive zsh (not already inside tmux) runs `_tmux_auto_attach` on startup.
 - **Attach to main** — join the existing `main` session
 - **Attach to session…** — fzf pick from `tmux list-sessions`
 - **New session** — name it, or leave blank for `main-2`, `main-3`, …
+- **Reset main (kill all panes)** — type `reset` to confirm killing `main` and attaching a fresh `main`; other sessions are untouched. If `main` is absent, create it. Unsaved work is lost; detached processes/services may survive.
 - **Shell only** — stay in zsh without tmux (Esc / cancel on fzf does the same)
+
+Without fzf, the single-key menu offers the same actions; `r` resets `main` with the same confirmation.
 
 The shell process is replaced when you attach or create a session.
 When you exit or detach from tmux, the terminal window closes.

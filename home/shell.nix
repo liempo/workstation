@@ -71,24 +71,26 @@
             exec tmux new-session -A -s main
           fi
 
-          local choice session name i
+          local choice session name i confirmation
           if command -v fzf &>/dev/null; then
             choice=$(
               printf '%s\n' \
                 'Attach to main' \
                 'Attach to session…' \
                 'New session' \
+                'Reset main (kill all panes)' \
                 'Shell only (no tmux)' |
               fzf --height=40% --reverse --prompt='tmux> ' --header='tmux is already running'
             )
           else
-            printf 'tmux running. [m]ain [l]ist [n]ew [s]hell? '
+            printf 'tmux running. [m]ain [l]ist [n]ew [r]eset main [s]hell? '
             read -k 1 choice
             echo
             case "''${choice:l}" in
               m) choice='Attach to main' ;;
               l) choice='Attach to session…' ;;
               n) choice='New session' ;;
+              r) choice='Reset main (kill all panes)' ;;
               *) choice='Shell only (no tmux)' ;;
             esac
           fi
@@ -107,6 +109,18 @@
               fi
               [[ -n "$session" ]] || return 0
               exec tmux attach-session -t "$session"
+              ;;
+            'Reset main (kill all panes)')
+              printf 'Kill main and all its panes? Unsaved work will be lost.\n'
+              printf 'Detached processes/services may survive. Other sessions are unchanged.\n'
+              printf 'Type reset to confirm: '
+              read -r confirmation || return 0
+              [[ "$confirmation" == 'reset' ]] || return 0
+              # Exact target: never kill main-2 if main does not exist.
+              if tmux has-session -t '=main' 2>/dev/null; then
+                tmux kill-session -t '=main' || return 1
+              fi
+              exec tmux new-session -A -s main
               ;;
             'New session')
               printf 'Session name (empty = auto): '
