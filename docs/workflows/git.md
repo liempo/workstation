@@ -24,6 +24,8 @@ Add the `.pub` file to the matching GitHub account under Settings → SSH keys.
 ## Passphrase and Keychain
 
 Keys use a passphrase. macOS Keychain stores it after the first load.
+SSH config sets `IgnoreUnknown UseKeychain` before `UseKeychain` so Nix OpenSSH
+(used by tmux SSH windows) can read it; Apple's SSH still uses Keychain.
 
 Add a key once after you create it:
 

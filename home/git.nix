@@ -57,6 +57,8 @@ in {
     enable = true;
     enableDefaultConfig = false;
     settings."*" = {
+      # Nix OpenSSH lacks Apple's Keychain option; HM emits this before it.
+      IgnoreUnknown = "UseKeychain";
       ForwardAgent = false;
       AddKeysToAgent = "yes";
       UseKeychain = true;
