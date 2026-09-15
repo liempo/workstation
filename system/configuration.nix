@@ -28,6 +28,7 @@
     casks = [
       "arc"
       "ghostty"
+      "mixxx"
       "moonlight"
       "stats"
       "tailscale-app"
