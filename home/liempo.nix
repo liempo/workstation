@@ -11,6 +11,16 @@ in {
     ./packages.nix
   ];
 
+  # Launchd user service; pair peers in the localhost GUI.
+  services.syncthing = {
+    enable = true;
+    guiAddress = "127.0.0.1:8384";
+    overrideDevices = false;
+    overrideFolders = false;
+    # Configure ~/Box (folder ID "box") in the GUI after pairing devstation.
+    # Declaring the folder here would reset GUI-managed sharing on rebuild.
+  };
+
   # ---------------------------------------------------------------------------
   # Dotfiles / XDG config (ghostty, nvim, tmux, IdeaVim)
   # Leave wiring here. Shell, git, and packages live in their own modules.

@@ -35,6 +35,7 @@ Rebuild with the `drs` shell function. See [workflows/rebuild.md](workflows/rebu
 | [toolchains.md](workflows/toolchains.md) | Node, Bun, Deno, direnv |
 | [rebuild.md](workflows/rebuild.md) | `drs` and how to apply changes |
 | [shell.md](workflows/shell.md) | Shell helpers (`drs`, `vact`), auto tmux |
+| [syncthing.md](workflows/syncthing.md) | Sync `~/Box` with devstation |
 | [launchd.md](workflows/launchd.md) | Launchd labels in System Settings |
 | [impurity.md](workflows/impurity.md) | Live editing of config in this repo |
 | [neovim.md](workflows/neovim.md) | Editor setup and LSP |
