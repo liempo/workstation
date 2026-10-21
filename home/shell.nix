@@ -46,6 +46,16 @@
         ];
       };
       initContent = ''
+        # Route Docker API clients (e.g. Supabase) to the Podman VM.
+        # Preserve explicit overrides and tolerate an uninitialized machine.
+        if [[ -z "''${DOCKER_HOST:-}" && -x /opt/homebrew/bin/podman ]]; then
+          _podman_socket=$(/opt/homebrew/bin/podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}' 2>/dev/null)
+          if [[ -n "$_podman_socket" ]]; then
+            export DOCKER_HOST="unix://$_podman_socket"
+          fi
+          unset _podman_socket
+        fi
+
         _tmux_auto_attach() {
           if [[ -n "$TMUX" || ! -o interactive ]]; then
             return 0

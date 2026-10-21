@@ -15,7 +15,7 @@
     nerd-fonts.fira-code
   ];
 
-  # GUI apps (declarative Homebrew)
+  # GUI apps and macOS VM tooling (declarative Homebrew)
   homebrew = {
     enable = true;
     onActivation.cleanup = "zap";
@@ -25,6 +25,8 @@
         trusted = true; # Homebrew 6+ HOMEBREW_REQUIRE_TAP_TRUST
       }
     ];
+    # Native macOS package includes the VM support needed by Podman Machine.
+    brews = ["podman"];
     casks = [
       "arc"
       "discord"
