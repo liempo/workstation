@@ -35,6 +35,12 @@ Rebuild after you:
 In pure mode, edits under `home/.config/` also need a rebuild.
 In impure mode, you can edit Neovim config live.
 
+## Editors managed through Homebrew
+
+Zed (`zed`) and Delta (`zed-delta`) are declared in `homebrew.casks` in
+`system/configuration.nix`. Run `drs` to install them into `/Applications`
+through nix-darwin's Homebrew activation.
+
 ## Validate without applying
 
 ```bash

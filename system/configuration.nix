@@ -39,6 +39,8 @@
       "tinycast" # abue-ammar/tinycast — macOS 26 Tahoe, arm64
       "virtualdj"
       "whatsapp"
+      "zed"
+      "zed-delta"
       "zoom"
     ];
     # Xcode: install manually from the App Store (not masApps — mas re-downloads on drs).
