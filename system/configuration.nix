@@ -29,6 +29,7 @@
     brews = ["podman"];
     casks = [
       "arc"
+      "crest-browser"
       "discord"
       "ghostty"
       "moonlight"
