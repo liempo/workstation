@@ -42,6 +42,9 @@
       "whatsapp"
       "zoom"
     ];
+    masApps = {
+      Amphetamine = 937984704;
+    };
     # Xcode: install manually from the App Store (not masApps — mas re-downloads on drs).
   };
 
