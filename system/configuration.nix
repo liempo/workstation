@@ -32,6 +32,7 @@
       "crest-browser"
       "discord"
       "ghostty"
+      "monitorcontrol"
       "moonlight"
       "paseo"
       "stats"

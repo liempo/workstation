@@ -106,7 +106,7 @@ Declared in `system/configuration.nix` via Homebrew:
 
 | Source | Apps |
 |--------|------|
-| Casks | Arc, Ghostty, Stats, Tailscale, Android Studio, Tinycast, Zoom |
+| Casks | Arc, Ghostty, MonitorControl, Stats, Tailscale, Android Studio, Tinycast, Zoom |
 
 Amphetamine is declared in `homebrew.masApps`; run `drs` while signed into the
 Mac App Store to install it.
