@@ -56,11 +56,12 @@ Closing or detaching a terminal only drops the client. Sessions keep running unt
 
 | Keys after Ctrl+Space | Action |
 |----------------------|--------|
-| `S` (Shift+S) | Prompt for a host/SSH alias and create an `ssh:HOST` window |
 | `%` | Side-by-side split; inherit this window's SSH host |
 | `"` | Top/bottom split; inherit this window's SSH host |
 | `c` | Standard new **local** window, even from an SSH window |
 
+The former prefix + Shift+S popup binding is removed. To create an SSH window manually,
+run `tmux-ssh-window new "$TMUX_PANE"` inside tmux.
 Enter `devstation`, another SSH alias, or `user@host`; blank input or Ctrl+C cancels.
 Put ports, keys, and jump hosts in `~/.ssh/config`, not the prompt.
 Each SSH window records its destination in the window-local `@ssh-host` option;
