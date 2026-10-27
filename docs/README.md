@@ -12,7 +12,7 @@ Agents start at [AGENTS.md](../AGENTS.md). That file is the router and lists the
 | `system/configuration.nix` | System packages, Homebrew casks, fonts, Stage Manager / native tiling, ⌘Esc Stage Manager toggle, Tinycast shortcuts |
 | `home/liempo.nix` | Home-manager entry: imports and XDG / impurity links |
 | `home/git.nix` | Multi-account git, SSH defaults, key auto-load |
-| `home/shell.nix` | Zsh, helpers (`drs`, `vact`), auto tmux, fzf/zoxide/direnv |
+| `home/shell.nix` | Zsh, helpers (`drs`, `vact`), fzf/zoxide/direnv |
 | `home/packages.nix` | User packages (nodejs, bun, deno) |
 | `home/.config/` | Neovim, tmux, Ghostty config files |
 | `home/.ideavimrc` | IntelliJ/IdeaVim keybindings |
@@ -34,7 +34,7 @@ Rebuild with the `drs` shell function. See [workflows/rebuild.md](workflows/rebu
 | [git.md](workflows/git.md) | Multi-account SSH and commit identity |
 | [toolchains.md](workflows/toolchains.md) | Node, Bun, Deno, direnv |
 | [rebuild.md](workflows/rebuild.md) | `drs` and how to apply changes |
-| [shell.md](workflows/shell.md) | Shell helpers (`drs`, `vact`), auto tmux |
+| [shell.md](workflows/shell.md) | Shell helpers (`drs`, `vact`), tmux |
 | [syncthing.md](workflows/syncthing.md) | Sync `~/Box` with devstation |
 | [launchd.md](workflows/launchd.md) | Launchd labels in System Settings |
 | [impurity.md](workflows/impurity.md) | Live editing of config in this repo |

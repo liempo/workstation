@@ -4,7 +4,6 @@ Shell config lives in `home/shell.nix`.
 Home-manager enables Zsh with oh-my-zsh (afowler theme).
 Afowler shows the short hostname, working directory, and repository status; the right prompt shows failed exit codes.
 Integrations: fzf, zoxide, direnv. `EDITOR` and `VISUAL` default to `nvim`.
-
 Zsh prepends `/opt/homebrew/bin` to `PATH` so Homebrew tools such as Podman are available.
 Zsh exports `DOCKER_HOST` using the socket from `podman machine inspect podman-machine-default`.
 The machine must exist for this lookup to succeed.
@@ -15,29 +14,15 @@ It is not in this module.
 
 ## Tmux
 
-Interactive zsh (not already inside tmux) runs `_tmux_auto_attach` on startup.
-
-| Situation | Behavior |
-|-----------|----------|
-| No tmux server | Create session `main` |
-| tmux already running | fzf menu: attach `main`, pick a session, new session, reset `main`, or shell only |
-| `TMUX_AUTO_MAIN=1` | Always attach/create `main` (old behavior) |
-| `TMUX_AUTO=0` | Skip auto tmux |
-
-**Menu options** (when tmux is already running):
-
-- **Attach to main** — join the existing `main` session
-- **Attach to session…** — fzf pick from `tmux list-sessions`
-- **New session** — name it, or leave blank for `main-2`, `main-3`, …
-- **Reset main (kill all panes)** — type `reset` to confirm killing `main` and attaching a fresh `main`; other sessions are untouched. If `main` is absent, create it. Unsaved work is lost; detached processes/services may survive.
-- **Shell only** — stay in zsh without tmux (Esc / cancel on fzf does the same)
-
-Without fzf, the single-key menu offers the same actions; `r` resets `main` with the same confirmation.
-
-The shell process is replaced when you attach or create a session.
-When you exit or detach from tmux, the terminal window closes.
-
-Nested tmux is avoided because the check skips when `$TMUX` is set.
+Zsh does not start or attach to tmux automatically. Run `tat` to attach to or create
+a session for the current directory, with new sessions starting in that directory.
+Session names use the physical directory path, with the home prefix shortened to `~`
+and dots/colons replaced by underscores (for example, `~/.dots` becomes `~/_dots`).
+There is no hash suffix. Symlink paths share a session; paths differing only in
+replaced characters can collide. Old hash-named sessions are not renamed.
+There is no menu or shared `main` session; existing sessions are left untouched.
+Inside tmux it does nothing. `TMUX_AUTO` and `TMUX_AUTO_MAIN` are no longer used.
+`tat` replaces the shell with tmux, so detaching or exiting tmux closes that shell.
 
 Tmux uses built-in status formatting (no TPM/plugins); `PREFIX` appears while the prefix is active.
 
@@ -93,6 +78,7 @@ python3 tests/tmux-ssh-window.py  # requires Python 3, Bash, tmux
 |---------|-------|---------|
 | `drs` | none | Rebuild system config. Use `drs --impure` for writable symlinks. |
 | `vact` | none | Activate or deactivate `./.venv` by directory. |
+| `tat` | none | Attach to/create a tmux session for the current directory. |
 
 ### drs
 
