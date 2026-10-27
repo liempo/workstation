@@ -5,6 +5,11 @@ Home-manager enables Zsh with oh-my-zsh (afowler theme).
 Afowler shows the short hostname, working directory, and repository status; the right prompt shows failed exit codes.
 Integrations: fzf, zoxide, direnv. `EDITOR` and `VISUAL` default to `nvim`.
 
+Zsh prepends `/opt/homebrew/bin` to `PATH` so Homebrew tools such as Podman are available.
+Zsh exports `DOCKER_HOST` using the socket from `podman machine inspect podman-machine-default`.
+The machine must exist for this lookup to succeed.
+After changing this configuration, run `drs` and open a new shell.
+
 SSH key auto-load at login lives in `home/git.nix` next to `gitAccounts`.
 It is not in this module.
 
